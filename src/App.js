@@ -11,7 +11,7 @@ import {
   ListItem,
   ListItemText,
 } from '@mui/material'
-import Quiz from './Quiz'
+import Quiz from './Quiz/Quiz'
 import greetings from './questions/greetings'
 
 const drawerWidth = 240
@@ -57,7 +57,6 @@ export default function PermanentDrawerLeft() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}>
         <Toolbar />
-        <Typography paragraph>Hello</Typography>
         <Quiz translations={greetings} />
       </Box>
     </Box>

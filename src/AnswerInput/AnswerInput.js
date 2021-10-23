@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
-import { TextField, Button } from '@mui/material'
+import { TextField, InputAdornment, IconButton } from '@mui/material'
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+import AnswerStatus from './AnswerStatus'
 import mappings from './mappings'
-import { shuffle } from '../utils'
 
-const AnswerInput = ({ hiragana, answers, questions, setQuestions }) => {
+const AnswerInput = ({ answers, handleCorrect, handleIncorrect, handleNext, hiragana }) => {
   const [val, setVal] = useState('')
   const [correctAnswer, setCorrectAnswer] = useState(null)
+
+  const answerStatus = correctAnswer ? 'success' : correctAnswer === false ? 'error' : ''
 
   const mapText = (t) => {
     for (const mapping in mappings) {
@@ -21,47 +24,56 @@ const AnswerInput = ({ hiragana, answers, questions, setQuestions }) => {
   }
 
   const checkAnswer = () => {
-    console.log('User input: ', val)
-    console.log('Available answers: ', answers)
     for (const answer of answers) {
       if (answer.toLowerCase() === val.toLowerCase()) {
         setCorrectAnswer(true)
+        handleCorrect()
         return
       }
     }
     setCorrectAnswer(false)
+    console.log(answers)
+    handleIncorrect()
   }
 
   const nextQuestion = () => {
     setVal('')
     setCorrectAnswer(null)
-    if (correctAnswer) {
-      setQuestions(questions.slice(1, questions.length))
-    } else {
-      setQuestions(shuffle(questions))
-    }
+    handleNext()
   }
 
   const handleChange = (e) => {
     setVal(hiragana ? mapText(e.target.value) : e.target.value)
   }
 
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      correctAnswer === null ? checkAnswer() : nextQuestion()
+    }
+  }
+
   return (
     <>
       <TextField
+        fullWidth
         id="outlined-basic"
         label={hiragana ? '答え' : 'Answer'}
         variant="outlined"
         value={val}
         onChange={(e) => handleChange(e)}
+        onKeyPress={(e) => handleKeyPress(e)}
+        color={answerStatus}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="end">
+              <IconButton onClick={correctAnswer === null ? checkAnswer : nextQuestion}>
+                <ChevronRightIcon />
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
       />
-      {correctAnswer === null ? (
-        <Button onClick={checkAnswer}>Submit</Button>
-      ) : (
-        <Button onClick={nextQuestion}>Next question</Button>
-      )}
-      {correctAnswer && <p>Correct!!</p>}
-      {correctAnswer === false && <p>Incorrect</p>}
+      {correctAnswer !== null && <AnswerStatus correctAnswer={correctAnswer} answers={answers} />}
     </>
   )
 }

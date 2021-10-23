@@ -1,28 +1,82 @@
 const greetings = [
-  { japanese: ['おはよう'], english: ['good morning', 'morning'] },
-  { japanese: ['おはようございます'], english: ['good morning', 'good morning (polite)'] },
-  { japanese: ['こんにちは'], english: ['good afternoon'] },
-  { japanese: ['こんばんは'], english: ['good evening'] },
-  { japanese: ['さようなら'], english: ['goodbye'] },
-  { japanese: ['おやすみなさい'], english: ['good night'] },
-  { japanese: ['ありがとお'], english: ['thank you'] },
-  { japanese: ['ありがとございます'], english: ['thank you', 'thank you (polite)'] },
-  { japanese: ['すみません'], english: ['sorry'] },
-  { japanese: ['いいえ'], english: ['no', 'not at all'] },
-  { japanese: ['いってきます'], english: ["I'll go and come back"] },
-  { japanese: ['いってらっしゃい'], english: ['please go and come back'] },
-  { japanese: ['ただいま'], english: ["I'm home"] },
-  { japanese: ['おかえりなさい'], english: ['welcome home'] },
   {
-    japanese: ['いただきます'],
-    english: ['thank you for the food (before eating)', 'thank you for the meal (before eating)'],
+    japanese: { main: ['おはよう'], other: [] },
+    english: { main: ['good morning (informal)'], other: ['good morning', 'morning'] },
   },
   {
-    japanese: ['ごちそさま'],
-    english: ['thank you for the food (after eating)', 'thank you for the meal (after eating)'],
+    japanese: { main: ['おはようございます'], other: [] },
+    english: { main: ['good morning (polite)'], other: ['good morning', 'morning'] },
   },
-  { japanese: ['はじめまして'], english: ['how do you do'] },
-  { japanese: ['よろしくおねがいします'], english: ['nice to meet you'] },
+  {
+    japanese: { main: ['こんにちは'], other: [] },
+    english: { main: ['good afternoon'], other: [] },
+  },
+  {
+    japanese: { main: ['こんばんは'], other: [] },
+    english: { main: ['good evening'], other: [] },
+  },
+  {
+    japanese: { main: ['さようなら'], other: [] },
+    english: { main: ['goodbye'], other: [] },
+  },
+  {
+    japanese: { main: ['おやすみなさい', 'おやすみ'], other: [] },
+    english: { main: ['good night'], other: [] },
+  },
+  {
+    japanese: { main: ['ありがとう'], other: [] },
+    english: { main: ['thank you (informal)'], other: ['thank you', 'thanks'] },
+  },
+  {
+    japanese: { main: ['ありがとうございます'], other: [] },
+    english: { main: ['thank you (polite)'], other: ['thank you'] },
+  },
+  {
+    japanese: { main: ['すみません'], other: [] },
+    english: { main: ['sorry', 'excuse me'], other: [] },
+  },
+  {
+    japanese: { main: ['いいえ'], other: [] },
+    english: { main: ['no', 'not at all', 'no problem'], other: [] },
+  },
+  {
+    japanese: { main: ['いってきます'], other: [] },
+    english: { main: ["I'll go and come back"], other: [] },
+  },
+  {
+    japanese: { main: ['いってらっしゃい'], other: [] },
+    english: { main: ['please go and come back'], other: [] },
+  },
+  {
+    japanese: { main: ['ただいま'], other: [] },
+    english: { main: ["I'm home"], other: [] },
+  },
+  {
+    japanese: { main: ['おかえりなさい', 'おかえり'], other: [] },
+    english: { main: ['welcome home'], other: ['welcome back'] },
+  },
+  {
+    japanese: { main: ['いただきます'], other: [] },
+    english: {
+      main: ['thank you for the meal (before eating)'],
+      other: ['thank you for the food (before eating)', 'thank you for the meal', 'thank you for the food'],
+    },
+  },
+  {
+    japanese: { main: ['ごちそさま'], other: [] },
+    english: {
+      main: ['thank you for the meal (after eating)'],
+      other: ['thank you for the food (after eating)', 'thank you for the meal', 'thank you for the food'],
+    },
+  },
+  {
+    japanese: { main: ['はじめまして'], other: [] },
+    english: { main: ['how do you do'], other: [] },
+  },
+  {
+    japanese: { main: ['よろしくおねがいします'], other: [] },
+    english: { main: ['nice to meet you'], other: [] },
+  },
 ]
 
 export default greetings

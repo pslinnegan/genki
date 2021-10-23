@@ -24,8 +24,16 @@ export function randomChoice(arr) {
 export function generateQuestions(translationsArray) {
   let questions = []
   for (const { japanese, english } of translationsArray) {
-    questions.push({ question: randomChoice(japanese), answers: english, questionType: questionTypes.MEANING })
-    questions.push({ question: randomChoice(english), answers: japanese, questionType: questionTypes.READING })
+    questions.push({
+      question: randomChoice(japanese.main),
+      answers: [...english.main, ...english.other],
+      questionType: questionTypes.MEANING,
+    })
+    questions.push({
+      question: randomChoice(english.main),
+      answers: [...japanese.main, ...japanese.other],
+      questionType: questionTypes.READING,
+    })
   }
   return shuffle(questions)
 }
