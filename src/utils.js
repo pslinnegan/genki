@@ -24,11 +24,16 @@ export function randomChoice(arr) {
 export function generateQuestions(translationsArray) {
   let questions = []
   for (const { japanese, english } of translationsArray) {
+    const hasKanji = japanese?.kanji && japanese?.kanji.length > 0
+    const jMain = randomChoice(japanese.main)
+    const jQuestion = hasKanji ? `${japanese.kanji} (${jMain})` : jMain
     questions.push({
-      question: randomChoice(japanese.main),
+      question: jQuestion,
       answers: [...english.main, ...english.other],
       questionType: questionTypes.MEANING,
     })
+    const jAnswersMain = [...japanese.main, ...japanese.other]
+    const jAnswer = hasKanji ? [jQuestion, ...jAnswersMain] : jAnswersMain
     questions.push({
       question: randomChoice(english.main),
       answers: [...japanese.main, ...japanese.other],

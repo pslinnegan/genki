@@ -13,6 +13,7 @@ import {
 } from '@mui/material'
 import Quiz from './Quiz/Quiz'
 import greetings from './questions/greetings'
+import n5Grammar from './questions/jlptNFiveVocab'
 
 const drawerWidth = 240
 
@@ -57,7 +58,7 @@ export default function PermanentDrawerLeft() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, bgcolor: 'background.default', p: 3 }}>
         <Toolbar />
-        <Quiz translations={greetings} />
+        <Quiz translations={n5Grammar} />
       </Box>
     </Box>
   )
