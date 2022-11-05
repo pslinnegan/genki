@@ -36,7 +36,7 @@ export function generateQuestions(translationsArray) {
     const jAnswer = hasKanji ? [jQuestion, ...jAnswersMain] : jAnswersMain
     questions.push({
       question: randomChoice(english.main),
-      answers: [...japanese.main, ...japanese.other],
+      answers: jAnswer,
       questionType: questionTypes.READING,
     })
   }
